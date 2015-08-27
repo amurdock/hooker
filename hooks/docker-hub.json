@@ -1,0 +1,10 @@
+{
+  "name": "docker-hub",
+  "endpoints": [
+    {
+      "env": "development",
+      "uuid": "ec5d6ac3-58c2-49fa-b968-0b3bf335e1b6",
+      "cmd": "echo 'who goes there'"
+    }
+  ]
+}
