@@ -1,19 +1,13 @@
-FROM debian:wheezy
+FROM node:0.12.7-wheezy
 
-# Installation dependencies
-RUN apt-get update && apt-get install -y curl
-
-# Runtime dependencies
-RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
-RUN apt-get install -y nodejs
+# Staging
+RUN mkdir -p /usr/node/app
+WORKDIR /usr/node/app
 
 # Bundle app source
-ADD package.json index.js /
+ONBUILD COPY package.json /usr/node/app/
+ONBUILD RUN npm install
+ONBUILD COPY hooks/ *.js /usr/node/app
 
-# We should minimize the image size by uninstalling stuff here?
-
-# App dependencies
-RUN npm install
-
-EXPOSE  8080
+EXPOSE 8080
 CMD ["node", "./index.js"]
