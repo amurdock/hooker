@@ -1,4 +1,4 @@
-FROM node:0.12.7-wheezy
+FROM nodesource/wheezy:0.12.7
 
 # Staging
 RUN mkdir -p /usr/node/app

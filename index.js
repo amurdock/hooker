@@ -17,7 +17,7 @@ function bootstrap(hooks) {
 		});
 	});
 
-	server = app.listen(8901, function () {
+	server = app.listen(8901, '0.0.0.0', function () {
 		var host = server.address()
 			, address = host.address
 			, port = host.port;
