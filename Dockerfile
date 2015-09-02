@@ -9,5 +9,5 @@ COPY package.json ./
 RUN npm install
 COPY hooks/ *.js ./
 
-EXPOSE 8080
-CMD ["node", "index.js"]
+EXPOSE 8901
+CMD ["npm", "start"]

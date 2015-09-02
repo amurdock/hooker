@@ -5,6 +5,7 @@
   "main": "index.js",
   "readme": "README.md",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"No test specified .... yet\" && exit 0"
   },
   "author": "",
