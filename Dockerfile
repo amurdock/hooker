@@ -7,7 +7,8 @@ WORKDIR /usr/node/app
 # Bundle app source
 COPY package.json ./
 RUN npm install
-COPY hooks/ *.js ./
+COPY *.js ./
+COPY hooks ./hooks
 
 EXPOSE 8901
 CMD ["npm", "start"]
