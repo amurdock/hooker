@@ -5,9 +5,9 @@ RUN mkdir -p /usr/node/app
 WORKDIR /usr/node/app
 
 # Bundle app source
-RUN COPY package.json ./
+COPY package.json ./
 RUN npm install
-RUN COPY hooks/ *.js ./
+COPY hooks/ *.js ./
 
 EXPOSE 8080
 CMD ["node", "index.js"]

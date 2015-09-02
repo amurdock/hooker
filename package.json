@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "description": "Web-hooks made simple",
   "main": "index.js",
+  "readme": "README.md",
   "scripts": {
     "test": "echo \"No test specified .... yet\" && exit 0"
   },
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amurdock/hooker.git"
+  },
   "dependencies": {
     "express": "~4.13.3",
     "URIjs": "~1.16.0",
