@@ -1,8 +1,23 @@
 'use strict';
 
-var express = require('express')
+var util = require('util')
+	, ifaces = require('os').networkInterfaces()
+	, express = require('express')
+	, pkg = require('./package.json')
 	, hooks = require('./hooks')
-	, app = express();
+	, app = express()
+  , address;
+
+Object.keys(ifaces).forEach(function (ifname) {
+	var count = 0;
+
+	ifaces[ifname].forEach(function (iface) {
+		if ('IPv4' === iface.family && !iface.internal) {
+			address = iface.address;
+			count = count + 1;
+		}
+	});
+});
 
 function bootstrap(hooks) {
 	var server;
@@ -12,9 +27,15 @@ function bootstrap(hooks) {
 			, cmd = hook.cmd;
 
 		app.post(uri, function(req, res) {
-			console.log('app post %s with command %s', uri, cmd);
-			res.status(200).send('OK').end();
+			var response = util.format('app post %s with command %s on %s\n', uri, cmd, address);
+			res.status(200).send(response).end();
 		});
+	});
+
+	app.get('*', function(req, res, next) {
+		var response = util.format('%s (%s) ~ %s\n', pkg.name, pkg.version, pkg.description);
+		res.status(200).send(response).end();
+		next();
 	});
 
 	server = app.listen(8901, '0.0.0.0', function () {

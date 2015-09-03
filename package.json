@@ -1,7 +1,7 @@
 {
   "name": "hooker",
   "version": "0.0.1",
-  "description": "Web-hooks made simple",
+  "description": "web hooks made simple",
   "main": "index.js",
   "readme": "README.md",
   "scripts": {
